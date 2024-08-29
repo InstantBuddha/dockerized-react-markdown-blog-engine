@@ -1,0 +1,17 @@
+[
+  {
+    "postFileName": "post1.md",
+    "postHashTags": ["#journey", "#adventure", "#firststeps"],
+    "author": "John Doe"
+  },
+  {
+    "postFileName": "post2.md",
+    "postHashTags": ["#exploration", "#challenges", "#unknown"],
+    "author": "Jane Smith"
+  },
+  {
+    "postFileName": "post3.md",
+    "postHashTags": ["#roads", "#choices", "#growth"],
+    "author": "Alice Johnson"
+  }
+]

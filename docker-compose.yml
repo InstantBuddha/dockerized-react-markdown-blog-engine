@@ -3,7 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: existing-project
+    image: blog-app:latest  
+    container_name: blog-app
     ports:
       - "3000:3000"
     volumes:
