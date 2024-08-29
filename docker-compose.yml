@@ -1,0 +1,10 @@
+services:
+  react-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: existing-project
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./blog-app:/blog-app
