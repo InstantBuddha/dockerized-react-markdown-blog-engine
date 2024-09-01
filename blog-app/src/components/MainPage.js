@@ -1,27 +1,21 @@
 import React, { useEffect, useState } from "react";
-import BlogPost from "./BlogPost";
+import ExcerptCard from "../components/ExcerptCard";
 
 const MainPage = () => {
-    const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
-      fetch("/posts/posts.json")
-        .then((response) => response.json())
-        .then((data) => setPosts(data));
-    }, []);
-  
-    return (
-      <div>
-        <h1>My Blog</h1>
-        {posts.map((post, index) => (
-          <BlogPost
-            key={index}
-            filePath={`/posts/${post.postFileName}`}
-            hashTags={post.postHashTags}
-            author={post.author}
-          />
-        ))}
-      </div>
+  useEffect(() => {
+    fetch("/posts/posts.json")
+      .then((response) => response.json())
+      .then((data) => setPosts(data));
+  }, []);
+
+  return (
+    <div className="card-list-container">
+      {posts.map((post, index) => (
+        <ExcerptCard index={index} post={post}/>
+      ))}
+    </div>
   );
 };
 export default MainPage;

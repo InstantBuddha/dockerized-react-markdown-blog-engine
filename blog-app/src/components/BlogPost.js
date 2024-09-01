@@ -1,21 +1,39 @@
 import React, { useEffect, useState } from "react";
 import ReactMarkDown from "react-markdown";
+import "../styles/blogPost.css";
+import { useParams } from "react-router-dom";
 
-const BlogPost = ({ filePath, hashTags, author }) => {
+const BlogPost = () => {
+  const { slug } = useParams();
+  const [post, setPost] = useState(null);
   const [content, setContent] = useState("");
 
   useEffect(() => {
-    fetch(filePath)
-      .then((response) => response.text())
-      .then((text) => setContent(text));
-  }, [filePath]);
+    fetch("/posts/posts.json")
+      .then((response) => response.json())
+      .then((data) => {
+        const foundPost = data.find((p) => p.slug === slug);
+        if (foundPost) {
+          setPost(foundPost);
+          fetch(`/posts/${foundPost.postFileName}`)
+            .then((response) => response.text())
+            .then((text) => setContent(text));
+        }
+      });
+  }, [slug]);
+
+  if (!post) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div>
-      <h2>{filePath.replace("/posts/", "").replace(".md", "")}</h2>
-      <p>Author: {author}</p>
+    <div className="blog-post-container">
       <ReactMarkDown>{content}</ReactMarkDown>
-      <p>Tags: {hashTags.join(", ")}</p>
+
+      <p>Written by: {post.author}</p>
+      <p>Tags: {post.postHashTags.join(", ")}</p>
     </div>
   );
 };
+
 export default BlogPost;

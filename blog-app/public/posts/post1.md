@@ -18,6 +18,21 @@ Lorem ipsum dolor sit amet, **consectetur** adipiscing elit. *Curabitur* sceleri
 
 Lorem ipsum dolor sit amet, **consectetur** adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
+```bash
+docker exec -it blog-app sh
+```
+
+```sh
+# use npm-check-updates to check what needs to be updated
+npx npm-check-updates -u
+
+# update them
+npm install
+
+# install react-markdown
+npm install react-markdown
+```
+
 ### Final Thoughts
 
 Lorem ipsum dolor sit amet, *consectetur* adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
